@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Reset Confirmation - NikoNect</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> <!-- Google Material Icons -->
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling with Background Image and Overlay */
+        body {
+            font-family: Arial, sans-serif;
+            color: #f0f0f0;
+            background: url('Image/bg.jpg') no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            position: relative;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6); /* Dark overlay */
+            z-index: 1;
+        }
+
+        /* Confirmation Container Styling */
+        .confirmation-container {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 400px;
+            background: rgba(50, 50, 50, 0.85); /* Semi-transparent background */
+            padding: 40px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            color: #f0f0f0;
+        }
+
+        /* Icon Styling */
+        .confirmation-icon {
+            font-size: 60px;
+            color: #4caf50; /* Green check color */
+            margin-bottom: 20px;
+        }
+
+        /* Message Styling */
+        .confirmation-message {
+            font-size: 1.2em;
+            margin-bottom: 20px;
+            color: #f0f0f0;
+        }
+
+        /* Back to Login Button */
+        .login-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #0095f6;
+            color: #fff;
+            font-size: 1em;
+            text-align: center;
+            border-radius: 5px;
+            text-decoration: none;
+            margin-top: 20px;
+            transition: background-color 0.3s ease;
+        }
+
+        .login-btn:hover {
+            background-color: #007bb5;
+        }
+    </style>
+</head>
+<body class="reset-confirmation-page">
+
+    <!-- Confirmation Container -->
+    <div class="confirmation-container">
+        <!-- Confirmation Icon -->
+        <span class="material-icons confirmation-icon">check_circle</span>
+
+        <!-- Confirmation Message -->
+        <p class="confirmation-message">A reset link has been sent to your email or phone number.<br>Please check your inbox to proceed with resetting your password.</p>
+
+        <!-- Back to Login Button -->
+        <a href="index.html" class="login-btn">Back to Login</a>
+    </div>
+<script>
+   document.addEventListener('DOMContentLoaded', function() {
+    const loginBtn = document.querySelector('.login-btn');
+    
+    loginBtn.addEventListener('click', function(event) {
+        console.log('Redirecting to login page');
+    });
+});
+
+
+</script>
+</body>
+</html>
+

@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NikoNect - See More</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* Reset and Body Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: url('Image/bg.jpg') no-repeat center center/cover;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f0f2f5;
+        }
+
+        /* Top Navigation Bar */
+        .navbar {
+            width: 100%;
+            background-color: #242526;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* Logo */
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .logo img {
+            width: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .navbar .logo h1 {
+            font-size: 1.5em;
+            color: #ffffff;
+            margin: 0;
+        }
+
+        /* Search Bar */
+        .navbar .search-bar {
+            flex: 1;
+            margin: 0 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .search-bar input {
+            width: 100%;
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: none;
+            font-size: 1em;
+            color: #333; /* Darker text for input field */
+        }
+
+        /* Navigation Links */
+        .navbar .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links .nav-item {
+            display: flex;
+            align-items: center;
+            color: #ffffff;
+            padding: 0 10px;
+            font-size: 0.9em;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links .nav-item .material-icons {
+            font-size: 1.5em;
+            margin-right: 5px;
+        }
+
+        .nav-links .nav-item:hover {
+            color: #b0b3b8;
+        }
+
+        /* See More Container */
+        .see-more-container {
+            width: 100%;
+            max-width: 800px;
+            margin-top: 100px; /* Add spacing for fixed navbar */
+            padding: 20px;
+            background: rgba(50, 50, 50, 0.85);
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            color: #ffffff;
+        }
+
+        /* Back Button Styling */
+        .back-button {
+            display: flex;
+            align-items: center;
+            color: #ffffff;
+            font-size: 1em;
+            text-decoration: none;
+            background-color: #0095f6;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin-bottom: 20px;
+            width: fit-content;
+        }
+
+        .back-button:hover {
+            background-color: #0077cc;
+        }
+
+        .back-button .material-icons {
+            margin-right: 5px;
+            font-size: 1.2em;
+        }
+
+        /* See More Section Title */
+        .see-more-container h2 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+
+        /* Button List */
+        .button-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 40px;
+        }
+
+ /* Button List */
+.button-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    margin-bottom: 40px;
+}
+
+/* Style for Buttons in Button List */
+.button-item {
+    display: flex;
+    align-items: center;
+    color: #ffffff;
+    padding: 12px 15px;
+    font-size: 1.1em;
+    text-decoration: none;
+    background-color: #3a3b3c;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+    justify-content: center;
+}
+
+.button-item .material-icons {
+    font-size: 1.5em;
+    margin-right: 8px;
+}
+
+.button-item p {
+    margin: 0;
+}
+
+/* Hover Effect */
+.button-item:hover {
+    background-color: #0095f6;
+}
+
+/* Styling for Logout and Switch Account Buttons */
+.logout-switch-container button {
+    background-color: #ff4d4d;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 5px;
+    font-size: 1.1em;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.logout-switch-container button:hover {
+    background-color: #e60000;
+}
+
+
+        .logout-switch-container {
+            display: flex;
+            flex-direction: column;
+            margin-top: 20px;
+            gap: 15px;
+        }
+
+        .logout-switch-container button {
+            background-color: #ff4d4d;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .logout-switch-container button:hover {
+            background-color: #e60000;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <!-- Logo -->
+        <div class="logo">
+            <img src="Image/logo.png" alt="NikoNect Logo"> <!-- Replace with actual logo image -->
+            <h1>NikoNect</h1>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+        </div>
+
+        <!-- Navigation Links with Icons -->
+        <div class="nav-links">
+            <a href="friends.html" class="nav-item"><span class="material-icons">people</span>Friends</a>
+            <a href="Video.html" class="nav-item"><span class="material-icons">videocam</span>Video</a>
+            <a href="marketplace.html" class="nav-item"><span class="material-icons">storefront</span>Marketplace</a>
+            <a href="groups.html" class="nav-item"><span class="material-icons">groups</span>Groups</a>
+            <a href="memories.html" class="nav-item"><span class="material-icons">history</span>Memories</a>
+            <a href="saved.html" class="nav-item"><span class="material-icons">bookmark</span>Saved</a>
+            <a href="about.html" class="nav-item"><span class="material-icons">rss_feed</span>Feed</a>
+            <a href="events.html" class="nav-item"><span class="material-icons">event</span>Events</a>
+            <a href="seemore.html" class="nav-item"><span class="material-icons">more_horiz</span>See More</a>
+        </div>
+    </div>
+
+    <!-- Back Button -->
+    <a href="about.html" class="back-button">
+        <span class="material-icons">arrow_back</span> Back
+    </a>
+
+    <!-- See More Container -->
+    <div class="see-more-container">
+        <h2>See More Options</h2>
+
+    <!-- Button List -->
+    <div class="button-list">
+        <a href="friends.html" class="button-item">
+            <span class="material-icons">people</span>
+            <p>Friends</p>
+        </a>
+        <a href="Video.html" class="button-item">
+            <span class="material-icons">videocam</span>
+            <p>Video</p>
+        </a>
+        <a href="marketplace.html" class="button-item">
+            <span class="material-icons">storefront</span>
+            <p>Marketplace</p>
+        </a>
+        <a href="groups.html" class="button-item">
+            <span class="material-icons">groups</span>
+            <p>Groups</p>
+        </a>
+        <a href="memories.html" class="button-item">
+            <span class="material-icons">history</span>
+            <p>Memories</p>
+        </a>
+        <a href="saved.html" class="button-item">
+            <span class="material-icons">bookmark</span>
+            <p>Saved</p>
+        </a>
+        <a href="about.html" class="button-item">
+            <span class="material-icons">rss_feed</span>
+            <p>Feed</p>
+        </a>
+        <a href="events.html" class="button-item">
+            <span class="material-icons">event</span>
+            <p>Events</p>
+        </a>
+    </div>
+
+
+        <!-- Logout and Switch Account Buttons -->
+        <div class="logout-switch-container">
+            <a href="index.html"><button>Log Out</button></a>
+            <a href="switchaccount.html"><button>Switch Account</button></a>
+        </div>
+    </div>
+    <script>
+document.addEventListener("DOMContentLoaded", function () {
+
+
+
+
+
+scrollToTopButton.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
+
+const buttonItems = document.querySelectorAll('.button-item');
+buttonItems.forEach(item => {
+    item.addEventListener('mouseenter', () => item.style.backgroundColor = '#0095f6');
+    item.addEventListener('mouseleave', () => item.style.backgroundColor = '#3a3b3c');
+});
+
+window.addEventListener('scroll', () => {
+    scrollToTopButton.style.display = window.scrollY > 300 ? 'block' : 'none';
+});
+
+const friendsList = document.querySelectorAll('.nav-links .nav-item');
+friendsList.forEach(friend => {
+    friend.addEventListener('click', () => {
+        friend.classList.toggle('online-status');
+        alert(friend.textContent.trim() + " is now " + (friend.classList.contains('online-status') ? "Online" : "Offline"));
+    });
+});
+
+buttonItems.forEach(button => {
+    button.addEventListener('click', () => {
+        buttonItems.forEach(b => b.classList.remove('active'));
+        button.classList.add('active');
+    });
+});
+
+friendsList.forEach(friend => {
+    friend.addEventListener('click', () => {
+        const friendName = friend.textContent.trim();
+        setTimeout(() => {
+            alert(`You have a new message from ${friendName}`);
+        }, 500);
+    });
+});
+});
+
+
+    </script>
+</body>
+</html>
