@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NikoNect</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> <!-- Google Material Icons -->
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background: #f0f2f5;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background: url('Image/bg.jpg') no-repeat center center/cover;
+            position: relative;
+            color: #ffffff; /* Set text color to white */
+        }
+
+        /* Top Navigation Bar */
+        .navbar {
+            width: 100%;
+            background-color: #242526;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            flex-wrap: wrap;
+        }
+
+        /* Logo */
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .logo img {
+            width: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .navbar .logo h1 {
+            font-size: 1.5em;
+            color: #ffffff;
+            margin: 0;
+        }
+
+        /* Search Bar */
+        .navbar .search-bar {
+            flex: 1;
+            margin: 0 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .search-bar input {
+            width: 100%;
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: none;
+            font-size: 1em;
+            color: #333; /* Darker text for input field */
+        }
+
+        /* Navigation Links */
+        .navbar .nav-links {
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .nav-links .nav-item {
+            display: flex;
+            align-items: center;
+            color: #ffffff;
+            padding: 0 10px;
+            font-size: 0.9em;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links .nav-item .material-icons {
+            font-size: 1.5em;
+            margin-right: 5px;
+        }
+
+        .nav-links .nav-item:hover {
+            color: #b0b3b8;
+        }
+
+        /* Responsive Navbar */
+        .navbar .menu-icon {
+            display: none;
+            font-size: 2em;
+            cursor: pointer;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 80px; /* Spacing to account for fixed navbar */
+            padding: 20px;
+            width: 100%;
+            max-width: 800px;
+            color: #ffffff; /* White text in main content */
+        }
+
+        /* Post Container Styling */
+        .post {
+            background: rgba(50, 50, 50, 0.85);
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Profile Link and Heading */
+        .profile-link {
+            color: #0095f6;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            color: #ffffff; /* Set headings to white */
+            margin: 10px 0;
+        }
+
+        /* Post Text Styling */
+        .justified {
+            text-align: justify;
+            line-height: 1.6;
+            color: #ffffff; /* Set post text to white */
+        }
+
+        .hashtags {
+            color: #b0b3b8; /* Slightly lighter color for hashtags */
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+
+        /* Image Styling */
+        .feed-img {
+            width: 100%;
+            border-radius: 10px;
+            margin: 15px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Actions Styling with Icon Buttons */
+        .actions {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 10px;
+        }
+
+        .action-btn {
+            display: flex;
+            align-items: center;
+            color: #b0b3b8; /* Light color for action buttons */
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 1.1em;
+        }
+
+        .action-btn .material-icons {
+            font-size: 1.2em;
+            margin-right: 5px;
+        }
+
+        .action-btn:hover {
+            color: #0095f6;
+        }
+
+        /* Media Query for Mobile Devices */
+        @media screen and (max-width: 768px) {
+            .navbar .nav-links {
+                display: none;
+                width: 100%;
+                flex-direction: column;
+                margin-top: 10px;
+            }
+
+            .navbar .nav-links.active {
+                display: flex;
+            }
+
+            .navbar .menu-icon {
+                display: block;
+            }
+
+            .navbar .search-bar input {
+                font-size: 0.9em;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <!-- Logo -->
+        <div class="logo">
+            <img src="Image/logo.png" alt="NikoNect Logo"> <!-- Replace with actual logo image -->
+            <h1>NikoNect</h1>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <input type="text" placeholder="Search NikoNect">
+        </div>
+
+        <!-- Navigation Links with Icons -->
+        <div class="nav-links">
+            <!-- Direct links to other pages (no onclick needed) -->
+            <a href="friends.html" class="nav-item"><span class="material-icons">people</span>Friends</a>
+            <a href="video.html" class="nav-item"><span class="material-icons">videocam</span>Video</a>
+            <a href="marketplace.html" class="nav-item"><span class="material-icons">storefront</span>Marketplace</a>
+            <a href="groups.html" class="nav-item"><span class="material-icons">groups</span>Groups</a>
+            <a href="memories.html" class="nav-item"><span class="material-icons">history</span>Memories</a>
+            <a href="saved.html" class="nav-item"><span class="material-icons">bookmark</span>Saved</a>
+            <a href="about.html" class="nav-item"><span class="material-icons">rss_feed</span>Feed</a>
+            <a href="events.html" class="nav-item"><span class="material-icons">event</span>Events</a>
+            <a href="seemore.html" class="nav-item"><span class="material-icons">more_horiz</span>See More</a>
+        </div>
+
+        <!-- Menu Icon for Mobile -->
+        <span class="material-icons menu-icon" id="menu-toggle">menu</span>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1>NikoNect Newsfeed</h1>
+
+    <!-- First Post -->
+    <div class="post">
+        <a href="profile1.html" class="profile-link">@niko</a>
+        <h2>🌟 Exciting Announcement!</h2>
+        <p class="justified">We're thrilled to announce our latest feature: customizable profile pages! 🎉 Users can now personalize their profiles with unique themes, backgrounds, and layouts, making each page truly their own.</p>
+        <p class="justified">Whether you want to showcase your creativity or simply express yourself, we’ve got you covered. Dive in and start building your dream profile today!</p>
+        <p class="justified">Join us on this journey and let’s make connections like never before! 💬✨</p>
+        <p class="hashtags">#ETC #NikoNect #ProfileCustomization #StayUnique #JoinTheCommunity</p>
+        <img src="Image/Feed1.png" alt="Newsfeed Picture" class="feed-img">
+        <p class="actions">
+            <a href="#" class="action-btn"><span class="material-icons">thumb_up</span>Like</a> 
+            <a href="#" class="action-btn"><span class="material-icons">comment</span>Comment</a> 
+            <a href="#" class="action-btn"><span class="material-icons">share</span>Share</a>
+        </p>
+    </div>
+
+    <!-- Second Post -->
+    <div class="post">
+        <a href="profile2.html" class="profile-link">@Shan</a>
+        <h2>🌟 Believe in Yourself!</h2>
+        <p class="justified">Every great achievement starts with the decision to try. Remember, it’s not about how fast you get there, but about the journey and the lessons you learn along the way.</p>
+        <p class="justified">🌱 Embrace challenges as opportunities for growth. Every setback is a setup for a comeback!</p>
+        <p class="justified">💪 Keep pushing forward and never underestimate the power of perseverance. You have the strength within you to achieve your dreams, no matter how big or small.</p>
+        <p class="justified">Today is the perfect day to take that first step. Let your passion ignite the fire in your heart and drive you toward your goals!</p>
+        <p class="hashtags">#MotivationMonday #BelieveInYourself #StayInspired #YouCanDoIt #ETC</p>
+        <img src="Image/Feed2.png" alt="Newsfeed Picture" class="feed-img">
+        <p class="actions">
+            <a href="#" class="action-btn"><span class="material-icons">thumb_up</span>Like</a> 
+            <a href="#" class="action-btn"><span class="material-icons">comment</span>Comment</a> 
+            <a href="#" class="action-btn"><span class="material-icons">share</span>Share</a>
+        </p>
+    </div>
+
+    <!-- Third Post -->
+    <div class="post">
+        <a href="profile3.html" class="profile-link">@Naruto</a>
+        <h2>🌈 Chase Your Dreams!</h2>
+        <p class="justified">In a world full of possibilities, don’t be afraid to reach for the stars! Every dream you have is a glimpse of your potential waiting to be realized.</p>
+        <p class="justified">🌟 Imagine your best self—the person you aspire to be—and take one step closer to that vision every day. It’s the small, consistent actions that lead to monumental changes.</p>
+        <p class="justified">💖 Surround yourself with positivity, seek inspiration, and remember that every setback is just a stepping stone toward your ultimate goal.</p>
+        <p class="justified">🌍 The journey might be challenging, but it’s the pursuit of your dreams that shapes who you are. So dare to dream big, believe in your vision, and take action. The world is yours for the taking!</p>
+        <p class="hashtags">#DreamBig #Aspirations #JourneyToSuccess #InspireYourself</p>
+        <img src="Image/Feed3.png" alt="Newsfeed Picture" class="feed-img">
+        <p class="actions">
+            <a href="#" class="action-btn"><span class="material-icons">thumb_up</span>Like</a> 
+            <a href="#" class="action-btn"><span class="material-icons">comment</span>Comment</a> 
+            <a href="#" class="action-btn"><span class="material-icons">share</span>Share</a>
+        </p>
+    </div>
+      <!-- JavaScript to Handle Menu Toggle -->
+      <script>
+        document.getElementById('menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+    </script>
+</body>
+</html>
