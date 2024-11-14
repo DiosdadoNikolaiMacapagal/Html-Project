@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NikoNect - View Event</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* Reset and Body Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: url('Image/bg.jpg') no-repeat center center/cover;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f0f2f5;
+        }
+
+        /* Top Navigation Bar */
+        .navbar {
+            width: 100%;
+            background-color: #242526;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* Logo */
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .logo img {
+            width: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .navbar .logo h1 {
+            font-size: 1.5em;
+            color: #ffffff;
+            margin: 0;
+        }
+
+        /* Search Bar */
+        .navbar .search-bar {
+            flex: 1;
+            margin: 0 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .search-bar input {
+            width: 100%;
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: none;
+            font-size: 1em;
+            color: #333;
+        }
+
+        /* Navigation Links */
+        .navbar .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links .nav-item {
+            color: #ffffff;
+            padding: 0 10px;
+            font-size: 0.9em;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links .nav-item .material-icons {
+            font-size: 1.5em;
+            margin-right: 5px;
+        }
+
+        .nav-links .nav-item:hover {
+            color: #b0b3b8;
+        }
+
+        /* Event Container */
+        .event-container {
+            width: 100%;
+            max-width: 800px;
+            margin-top: 100px;
+            padding: 20px;
+            background: rgba(50, 50, 50, 0.85);
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            color: #ffffff;
+        }
+
+        /* Event Image Styling */
+        .event-image {
+            width: 100%;
+            height: auto;
+            max-height: 400px;
+            border-radius: 10px;
+            object-fit: cover;
+            margin-bottom: 20px;
+        }
+        .video-frame {
+            width: 100%;
+            border-radius: 10px;
+            margin: 15px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        /* Back Button Styling */
+        .back-button {
+            display: flex;
+            align-items: center;
+            color: #ffffff;
+            font-size: 1em;
+            text-decoration: none;
+            background-color: #0095f6;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin-bottom: 20px;
+            width: fit-content;
+        }
+
+        .back-button:hover {
+            background-color: #0077cc;
+        }
+
+        .back-button .material-icons {
+            margin-right: 5px;
+            font-size: 1.2em;
+        }
+
+        /* Event Details */
+        .event-details-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .event-title {
+            font-size: 2em;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .event-details p {
+            font-size: 1em;
+            color: #d3d3d3;
+        }
+
+        .event-actions {
+            display: flex;
+            gap: 10px;
+            margin-top: 20px;
+        }
+
+        .event-actions button {
+            background-color: #0095f6;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1em;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+
+        .event-actions button:hover {
+            background-color: #0077cc;
+        }
+
+        .event-actions button .material-icons {
+            font-size: 1.2em;
+            margin-right: 5px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="Image/logo.png" alt="NikoNect Logo">
+            <h1>NikoNect</h1>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search Events">
+        </div>
+        <div class="nav-links">
+            <a href="friends.html" class="nav-item"><span class="material-icons">people</span>Friends</a>
+            <a href="Video.html" class="nav-item"><span class="material-icons">videocam</span>Video</a>
+            <a href="marketplace.html" class="nav-item"><span class="material-icons">storefront</span>Marketplace</a>
+            <a href="groups.html" class="nav-item"><span class="material-icons">groups</span>Groups</a>
+            <a href="memories.html" class="nav-item"><span class="material-icons">history</span>Memories</a>
+            <a href="saved.html" class="nav-item"><span class="material-icons">bookmark</span>Saved</a>
+            <a href="about.html" class="nav-item"><span class="material-icons">rss_feed</span>Feed</a>
+            <a href="events.html" class="nav-item"><span class="material-icons">event</span>Events</a>
+            <a href="seemore.html" class="nav-item"><span class="material-icons">more_horiz</span>See More</a>
+        </div>
+    </div>
+
+    <!-- Back Button -->
+    <a href="events.html" class="back-button">
+        <span class="material-icons">arrow_back</span> Back to Events
+    </a>
+
+    <!-- Event Container -->
+    <div class="event-container">
+        <!-- Event Image -->
+        <iframe class="video-frame" src="https://www.facebook.com/plugins/video.php?height=314&href=https%3A%2F%2Fwww.facebook.com%2Funiversityofcebuinc%2Fvideos%2F524463783831585%2F&show_text=false&width=560&t=0" width="750" height="314" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share" allowFullScreen="true"></iframe>
+
+        <!-- Event Details -->
+        <div class="event-details-container">
+            <h1 class="event-title">UC Intramurals 2024</h1>
+            <div class="event-details">
+                <p><strong>Date:</strong> November 20-23, 2024</p>
+                <p><strong>Time:</strong> 11:00 AM - 7:00 PM</p>
+                <p><strong>Location:</strong> University of Cebu - Main Campus, Sanciangko St Cebu City, Philippines</p>
+                <p><strong>Description:</strong>Get ready for the most exciting sports and cultural event of the year<strong>UC Intramurals 2024</strong>! 🏆🎉 Join us from <strong>November 20-23, 2024</strong>, every day from <strong>11:00 AM to 7:00 PM</strong> at the <strong>University of Cebu - Main Campus</strong>, located on <strong>Sanciangko St, Cebu City, Philippines</strong> 🇵🇭. This event promises thrilling competitions, vibrant performances, and unforgettable school spirit! 🏀🎭 Whether you're cheering from the sidelines or competing in your favorite sport, UC Intramurals is the place to be for fun, teamwork, and a whole lot of action! Come and support your school and make memories that will last a lifetime!</p>
+            </div>
+            <div class="event-actions">
+                <button><span class="material-icons">bookmark</span> Save Event</button>
+                <button><span class="material-icons">group_add</span> Join Event</button>
+                <button><span class="material-icons">share</span> Share Event</button>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+    const saveButton = document.querySelector('.event-actions button:first-child');
+    const shareButton = document.querySelector('.event-actions button:last-child');
+    
+    // Toggle save event button state
+    saveButton.addEventListener('click', function () {
+        if (saveButton.classList.contains('saved')) {
+            saveButton.classList.remove('saved');
+            saveButton.innerHTML = '<span class="material-icons">bookmark</span> Save Event';
+        } else {
+            saveButton.classList.add('saved');
+            saveButton.innerHTML = '<span class="material-icons">bookmark_added</span> Event Saved';
+        }
+    });
+
+    // Share event functionality (example)
+    shareButton.addEventListener('click', function () {
+        const eventTitle = document.querySelector('.event-title').innerText;
+        const eventURL = window.location.href;
+        
+        const shareData = {
+            title: eventTitle,
+            text: `Check out this event: ${eventTitle}`,
+            url: eventURL
+        };
+
+        if (navigator.share) {
+            navigator.share(shareData)
+                .then(() => console.log('Event shared successfully'))
+                .catch((error) => console.log('Error sharing event', error));
+        } else {
+            alert('Sharing not supported on this device/browser.');
+        }
+    });
+});
+
+    </script>
+</body>
+</html>
