@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NikoNect - Saved</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* Reset and Body Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: url('Image/bg.jpg') no-repeat center center/cover;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f0f2f5;
+        }
+
+        /* Top Navigation Bar */
+        .navbar {
+            width: 100%;
+            background-color: #242526;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* Logo */
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .logo img {
+            width: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .navbar .logo h1 {
+            font-size: 1.5em;
+            color: #ffffff;
+            margin: 0;
+        }
+
+        /* Search Bar */
+        .navbar .search-bar {
+            flex: 1;
+            margin: 0 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .search-bar input {
+            width: 100%;
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: none;
+            font-size: 1em;
+            color: #333; /* Darker text for input field */
+        }
+
+        /* Navigation Links */
+        .navbar .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links .nav-item {
+            display: flex;
+            align-items: center;
+            color: #ffffff;
+            padding: 0 10px;
+            font-size: 0.9em;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links .nav-item .material-icons {
+            font-size: 1.5em;
+            margin-right: 5px;
+        }
+
+        .nav-links .nav-item:hover {
+            color: #b0b3b8;
+        }
+
+        /* Container for Saved Section */
+        .saved-container {
+            width: 100%;
+            max-width: 800px;
+            margin-top: 100px; /* Add spacing for fixed navbar */
+            padding: 20px;
+            background: rgba(50, 50, 50, 0.85);
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            color: #ffffff;
+        }
+
+        /* Back Button Styling */
+        .back-button {
+            display: flex;
+            align-items: center;
+            color: #ffffff;
+            font-size: 1em;
+            text-decoration: none;
+            background-color: #0095f6;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin-bottom: 20px;
+            width: fit-content;
+        }
+
+        .back-button:hover {
+            background-color: #0077cc;
+        }
+
+        .back-button .material-icons {
+            margin-right: 5px;
+            font-size: 1.2em;
+        }
+
+        /* Section Titles */
+        .section-title {
+            font-size: 1.5em;
+            margin-bottom: 15px;
+        }
+
+        /* Saved Post Styling */
+        .saved-post {
+            display: flex;
+            flex-direction: column;
+            margin-bottom: 30px;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 15px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Post Image */
+        .saved-post img,
+        .saved-post video {
+            width: 100%;
+            border-radius: 10px;
+            margin-bottom: 15px;
+        }
+
+        /* Saved Post Caption */
+        .saved-post-caption {
+            color: #ffffff;
+            font-size: 1em;
+            margin-bottom: 15px;
+            word-wrap: break-word;
+        }
+
+        /* Buttons for Interactions */
+        .saved-post-buttons {
+            display: flex;
+            justify-content: flex-start;
+            gap: 15px;
+        }
+
+        .saved-post-buttons button {
+            background-color: #0095f6;
+            color: white;
+            padding: 8px 15px;
+            border: none;
+            border-radius: 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+
+        .saved-post-buttons button:hover {
+            background-color: #0077cc;
+        }
+
+        .saved-post-buttons button .material-icons {
+            font-size: 1.2em;
+            margin-right: 5px;
+        }
+
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <!-- Logo -->
+        <div class="logo">
+            <img src="Image/logo.png" alt="NikoNect Logo"> <!-- Replace with actual logo image -->
+            <h1>NikoNect</h1>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <input type="text" placeholder="Search Saved Items">
+        </div>
+
+        <!-- Navigation Links with Icons -->
+        <div class="nav-links">
+            <a href="friends.html" class="nav-item"><span class="material-icons">people</span>Friends</a>
+            <a href="Video.html" class="nav-item"><span class="material-icons">videocam</span>Video</a>
+            <a href="marketplace.html" class="nav-item"><span class="material-icons">storefront</span>Marketplace</a>
+            <a href="groups.html" class="nav-item"><span class="material-icons">groups</span>Groups</a>
+            <a href="memories.html" class="nav-item"><span class="material-icons">history</span>Memories</a>
+            <a href="saved.html" class="nav-item"><span class="material-icons">bookmark</span>Saved</a>
+            <a href="about.html" class="nav-item"><span class="material-icons">rss_feed</span>Feed</a>
+            <a href="events.html" class="nav-item"><span class="material-icons">event</span>Events</a>
+            <a href="seemore.html" class="nav-item"><span class="material-icons">more_horiz</span>See More</a>
+        </div>
+    </div>
+
+    <!-- Back Button -->
+    <a href="about.html" class="back-button">
+        <span class="material-icons">arrow_back</span> Back
+    </a>
+
+    <!-- Saved Items Container -->
+    <div class="saved-container">
+        <h2 class="section-title">Your Saved Items</h2>
+
+        <!-- Saved Post 1 -->
+        <div class="saved-post">
+            <img src="Image/saved1.gif" alt="Saved Post 1">
+            <div class="saved-post-caption">
+                <p>This is a saved post you liked! A memorable moment captured.</p>
+            </div>
+            <div class="saved-post-buttons">
+                <button><span class="material-icons">thumb_up</span> Like</button>
+                <button><span class="material-icons">comment</span> Comment</button>
+                <button><span class="material-icons">share</span> Share</button>
+            </div>
+        </div>
+
+        <!-- Saved Post 2 -->
+        <div class="saved-post">
+            <img src="Image/saved2.gif" alt="Saved Post 2"> 
+            <div class="saved-post-caption">
+                <p>Another saved post! Keep track of all your favorite moments.</p>
+            </div>
+            <div class="saved-post-buttons">
+                <button><span class="material-icons">thumb_up</span> Like</button>
+                <button><span class="material-icons">comment</span> Comment</button>
+                <button><span class="material-icons">share</span> Share</button>
+            </div>
+        </div>
+
+        <!-- Saved Post 3 -->
+        <div class="saved-post">
+            <img src="Image/saved3.gif" alt="Saved Post 3"> 
+            <div class="saved-post-caption">
+                <p>This post has been saved for later! You can always revisit it.</p>
+            </div>
+            <div class="saved-post-buttons">
+                <button><span class="material-icons">thumb_up</span> Like</button>
+                <button><span class="material-icons">comment</span> Comment</button>
+                <button><span class="material-icons">share</span> Share</button>
+            </div>
+        </div>
+
+        <!-- Saved Post 4 -->
+        <div class="saved-post">
+            <img src="Image/newsave1.gif" alt="Saved Post 3">
+            <div class="saved-post-caption">
+                <p>Tefjawfjwafhjw.</p>
+            </div>
+            <div class="saved-post-buttons">
+                <button><span class="material-icons">thumb_up</span> Like</button>
+                <button><span class="material-icons">comment</span> Comment</button>
+                <button><span class="material-icons">share</span> Share</button>
+            </div>
+        </div>
+
+        <!-- Saved Post 5 -->
+        <div class="saved-post">
+            <img src="Image/newsave2.gif" alt="Saved Post 3">
+            <div class="saved-post-caption">
+                <p>rizzzz</p>
+            </div>
+            <div class="saved-post-buttons">
+                <button><span class="material-icons">thumb_up</span> Like</button>
+                <button><span class="material-icons">comment</span> Comment</button>
+                <button><span class="material-icons">share</span> Share</button>
+            </div>
+        </div>
+
+        <!-- Saved Post 6 -->
+        <div class="saved-post">
+            <img src="Image/saved4.gif" alt="Saved Post 4"> <!-- Replace with actual image -->
+            <div class="saved-post-caption">
+                <p>Saved memories you don't want to forget!</p>
+            </div>
+            <div class="saved-post-buttons">
+                <button><span class="material-icons">thumb_up</span> Like</button>
+                <button><span class="material-icons">comment</span> Comment</button>
+                <button><span class="material-icons">share</span> Share</button>
+            </div>
+        </div>
+
+        <!-- Saved Post 7 -->
+        <div class="saved-post">
+            <img src="Image/saved5.gif" alt="Saved Post 5"> <!-- Replace with actual image -->
+            <div class="saved-post-caption">
+                <p>Memories are meant to be saved!</p>
+            </div>
+            <div class="saved-post-buttons">
+                <button><span class="material-icons">thumb_up</span> Like</button>
+                <button><span class="material-icons">comment</span> Comment</button>
+                <button><span class="material-icons">share</span> Share</button>
+            </div>
+        </div>
+    </div>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const likeButtons = document.querySelectorAll('.saved-post-buttons button');
+    likeButtons.forEach(button => {
+        button.addEventListener('click', function(event) {
+            const buttonType = event.target.closest('button').querySelector('.material-icons').textContent;
+
+            if (buttonType === 'thumb_up') {
+                toggleLike(event.target.closest('button'));
+            } else if (buttonType === 'comment') {
+                toggleComment(event.target.closest('.saved-post'));
+            } else if (buttonType === 'share') {
+                sharePost();
+            }
+        });
+    });
+});
+
+function toggleLike(button) {
+    const likeCount = button.querySelector('.like-count');
+    const isLiked = button.classList.contains('liked');
+    if (isLiked) {
+        button.classList.remove('liked');
+        likeCount.textContent = parseInt(likeCount.textContent) - 1;
+    } else {
+        button.classList.add('liked');
+        likeCount.textContent = parseInt(likeCount.textContent) + 1;
+    }
+}
+
+function toggleComment(post) {
+    const commentSection = post.querySelector('.comment-section');
+    if (commentSection) {
+        commentSection.style.display = (commentSection.style.display === 'none' || commentSection.style.display === '') ? 'block' : 'none';
+    }
+}
+
+function sharePost() {
+    alert('Shared successfully!');
+}
+
+    </script>
+</body>
+</html>

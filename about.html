@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NikoNect</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> <!-- Google Material Icons -->
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body */
+        body {
+         font-family: Arial, sans-serif;
+         color: #ffffff;
+         background: url('Image/bg.jpg') no-repeat center center;
+         background-size: cover; 
+         background-attachment: fixed; 
+         background-position: center; 
+         min-height: 100vh; 
+         display: flex;
+         flex-direction: column;
+         align-items: center;
+        }
+
+        /* Overlay for better text visibility */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+          
+            z-index: -1;
+        }
+
+        /* Navbar */
+        .navbar {
+            width: 100%;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 20px;
+            background: rgba(36, 37, 38, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .logo img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .navbar .logo h1 {
+            font-size: 1.4em;
+            color: #ffffff;
+        }
+
+        .navbar .search-bar input {
+            width: 100%;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 20px;
+            background: #f0f2f5;
+            color: #333;
+            font-size: 1em;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .nav-links a {
+            margin: 0 10px;
+            text-decoration: none;
+            color: #ffffff;
+            font-size: 1em;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .nav-links a:hover {
+            color: #0095f6;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 100px;
+            padding: 20px;
+            width: 90%;
+            max-width: 800px;
+        }
+
+        /* Posts */
+        .post {
+            background: rgba(36, 37, 38, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
+            animation: fadeIn 0.8s ease-in-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .post h2 {
+            font-size: 1.5em;
+            margin-bottom: 10px;
+        }
+
+        .post p {
+            margin: 10px 0;
+            line-height: 1.6;
+        }
+
+        .post img {
+            width: 100%;
+            border-radius: 10px;
+            margin: 15px 0;
+        }
+
+        .post .hashtags {
+            color: #b0b3b8;
+            font-size: 0.9em;
+        }
+
+        .post .actions {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 10px;
+        }
+
+        .actions a {
+            text-decoration: none;
+            color: #b0b3b8;
+            display: flex;
+            align-items: center;
+            font-size: 1em;
+        }
+
+        .actions a:hover {
+            color: #0095f6;
+        }
+
+        .actions .like-counter {
+            margin-left: 5px;
+            font-weight: bold;
+        }
+
+        /* Button for Load More */
+        .load-more {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background: #0095f6;
+            color: #ffffff;
+            font-size: 1em;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .load-more:hover {
+            background: #007bb5;
+        }
+         /* Comments Section */
+        .comments {
+            margin-top: 20px;
+        }
+
+        .comment {
+            margin: 5px 0;
+            padding: 5px 10px;
+            background: rgba(50, 50, 50, 0.9);
+            border-radius: 5px;
+        }
+
+        .comment-form {
+            display: flex;
+            margin-top: 10px;
+        }
+
+        .comment-form input {
+            flex: 1;
+            padding: 8px;
+            border: none;
+            border-radius: 5px;
+            margin-right: 10px;
+        }
+
+        .comment-form button {
+            padding: 8px 15px;
+            background: #0095f6;
+            color: #ffffff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .comment-form button:hover {
+            background: #007bb5;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <!-- Logo -->
+        <div class="logo">
+            <img src="Image/logo.png" alt="NikoNect Logo"> <!-- Replace with actual logo image -->
+            <h1>NikoNect</h1>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <input type="text" placeholder="Search NikoNect">
+        </div>
+
+        <!-- Navigation Links with Icons -->
+        <div class="nav-links">
+            <!-- Direct links to other pages (no onclick needed) -->
+            <a href="friends.html" class="nav-item"><span class="material-icons">people</span>Friends</a>
+            <a href="video.html" class="nav-item"><span class="material-icons">videocam</span>Video</a>
+            <a href="marketplace.html" class="nav-item"><span class="material-icons">storefront</span>Marketplace</a>
+            <a href="groups.html" class="nav-item"><span class="material-icons">groups</span>Groups</a>
+            <a href="memories.html" class="nav-item"><span class="material-icons">history</span>Memories</a>
+            <a href="saved.html" class="nav-item"><span class="material-icons">bookmark</span>Saved</a>
+            <a href="about.html" class="nav-item"><span class="material-icons">rss_feed</span>Feed</a>
+            <a href="events.html" class="nav-item"><span class="material-icons">event</span>Events</a>
+            <a href="seemore.html" class="nav-item"><span class="material-icons">more_horiz</span>See More</a>
+        </div>
+
+        <!-- Menu Icon for Mobile -->
+        <span class="material-icons menu-icon" id="menu-toggle">menu</span>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        <h1>NikoNect Newsfeed</h1>
+
+    <!-- First Post -->
+    <div class="post" data-post-id="1">
+        <a href="profile1.html" class="profile-link"><h2>@niko</h2></a>
+        <h2>🌟 Exciting Announcement!</h2>
+        <p class="justified">We're thrilled to announce our latest feature: customizable profile pages! 🎉 Users can now personalize their profiles with unique themes, backgrounds, and layouts, making each page truly their own.</p>
+        <p class="justified">Whether you want to showcase your creativity or simply express yourself, we’ve got you covered. Dive in and start building your dream profile today!</p>
+        <p class="justified">Join us on this journey and let’s make connections like never before! 💬✨</p>
+        <p class="hashtags">#ETC #NikoNect #ProfileCustomization #StayUnique #JoinTheCommunity</p>
+        <img src="Image/Feed1.png" alt="Newsfeed Picture" class="feed-img">
+        <p class="actions">
+            <a href="#" class="like-btn"><span class="material-icons">thumb_up</span>Like <span class="like-counter">0</span></a>
+            <a href="#"><span class="material-icons">share</span>Share</a>
+        </p>
+    </div>
+       <!-- Comments -->
+       <div class="comments">
+        <div class="comment">Great feature! Can't wait to try it! - @Dayin</div>
+    </div>
+    <!-- Comment Form -->
+    <form class="comment-form">
+        <input type="text" placeholder="Add a comment..." />
+        <button type="submit">Post</button>
+    </form>
+    <br>
+    <br>
+    <!-- Second Post -->
+    <div class="post"data-post-id="2">
+        <a href="profile2.html" class="profile-link"><h2>@Shan</h2></a>
+        <h2>🌟 Believe in Yourself!</h2>
+        <p class="justified">Every great achievement starts with the decision to try. Remember, it’s not about how fast you get there, but about the journey and the lessons you learn along the way.</p>
+        <p class="justified">🌱 Embrace challenges as opportunities for growth. Every setback is a setup for a comeback!</p>
+        <p class="justified">💪 Keep pushing forward and never underestimate the power of perseverance. You have the strength within you to achieve your dreams, no matter how big or small.</p>
+        <p class="justified">Today is the perfect day to take that first step. Let your passion ignite the fire in your heart and drive you toward your goals!</p>
+        <p class="hashtags">#MotivationMonday #BelieveInYourself #StayInspired #YouCanDoIt #ETC</p>
+        <img src="Image/Feed2.png" alt="Newsfeed Picture" class="feed-img">
+        <p class="actions">
+            <a href="#" class="like-btn"><span class="material-icons">thumb_up</span>Like <span class="like-counter">0</span></a>
+            <a href="#"><span class="material-icons">share</span>Share</a>
+        </p>
+    </div>
+     <!-- Comments -->
+     <div class="comments">
+        <div class="comment">Wow! - @Nini</div>
+    </div>
+    <!-- Comment Form -->
+    <form class="comment-form">
+        <input type="text" placeholder="Add a comment..." />
+        <button type="submit">Post</button>
+    </form>
+    <br>
+    <br>
+    <!-- Third Post -->
+    <div class="post" data-post-id="3">
+        <a href="profile3.html" class="profile-link"><h2>@Naruto</h2></a>
+        <h2>🌈 Chase Your Dreams!</h2>
+        <p class="justified">In a world full of possibilities, don’t be afraid to reach for the stars! Every dream you have is a glimpse of your potential waiting to be realized.</p>
+        <p class="justified">🌟 Imagine your best self—the person you aspire to be—and take one step closer to that vision every day. It’s the small, consistent actions that lead to monumental changes.</p>
+        <p class="justified">💖 Surround yourself with positivity, seek inspiration, and remember that every setback is just a stepping stone toward your ultimate goal.</p>
+        <p class="justified">🌍 The journey might be challenging, but it’s the pursuit of your dreams that shapes who you are. So dare to dream big, believe in your vision, and take action. The world is yours for the taking!</p>
+        <p class="hashtags">#DreamBig #Aspirations #JourneyToSuccess #InspireYourself</p>
+        <img src="Image/newnaruto.gif" alt="Newsfeed Picture" class="feed-img">
+        <p class="actions">
+            <a href="#" class="like-btn"><span class="material-icons">thumb_up</span>Like <span class="like-counter">0</span></a>
+                <a href="#"><span class="material-icons">share</span>Share</a>
+        </p>
+    </div>
+         <!-- Comments -->
+         <div class="comments">
+            <div class="comment">Haiii kapoya raba mag code - @Shanko</div>
+        </div>
+        <!-- Comment Form -->
+        <form class="comment-form">
+            <input type="text" placeholder="Add a comment..." />
+            <button type="submit">Post</button>
+        </form>
+        <br>
+        <br>
+    <button class="load-more" id="loadMore">Load More Posts</button>
+    <script>
+        // Like Button Functionality
+        document.querySelectorAll('.like-btn').forEach(button => {
+            button.addEventListener('click', event => {
+                event.preventDefault();
+                const counter = button.querySelector('.like-counter');
+                counter.textContent = parseInt(counter.textContent) + 1;
+            });
+        });
+
+        // Load More Posts
+        const newsfeed = document.getElementById('newsfeed');
+        const loadMoreButton = document.getElementById('loadMore');
+
+        loadMoreButton.addEventListener('click', () => {
+            const newPost = document.createElement('div');
+            newPost.className = 'post';
+            newPost.innerHTML = `
+                <h2>🌈 New Post!</h2>
+                <p>This is a dynamically loaded post. 🎉</p>
+                <img src="Image/anime.gif" alt="New Post Image">
+                <div class="hashtags">#DynamicPost #NikoNect</div>
+                <div class="actions">
+                    <a href="#" class="like-btn"><span class="material-icons">thumb_up</span>Like <span class="like-counter">0</span></a>
+                    <a href="#"><span class="material-icons">comment</span>Comment</a>
+                    <a href="#"><span class="material-icons">share</span>Share</a>
+                </div>
+            `;
+            newsfeed.appendChild(newPost);
+
+            // Add Like Button Functionality to New Post
+            const likeButton = newPost.querySelector('.like-btn');
+            likeButton.addEventListener('click', event => {
+                event.preventDefault();
+                const counter = likeButton.querySelector('.like-counter');
+                counter.textContent = parseInt(counter.textContent) + 1;
+            });
+        });
+        // Load stored likes and comments
+        document.addEventListener('DOMContentLoaded', () => {
+            const posts = document.querySelectorAll('.post');
+            posts.forEach(post => {
+                const postId = post.dataset.postId;
+                const likeCounter = post.querySelector('.like-counter');
+                const commentsContainer = post.querySelector('.comments');
+                 // Load comments
+                 const savedComments = localStorage.getItem(`post_${postId}_comments`);
+                if (savedComments) {
+                    const comments = JSON.parse(savedComments);
+                    comments.forEach(comment => {
+                        const commentDiv = document.createElement('div');
+                        commentDiv.className = 'comment';
+                        commentDiv.textContent = comment;
+                        commentsContainer.appendChild(commentDiv);
+                    });
+                }
+            });
+        });
+           // Comment form functionality
+           document.querySelectorAll('.comment-form').forEach(form => {
+            form.addEventListener('submit', event => {
+                event.preventDefault();
+                const input = form.querySelector('input');
+                const commentText = input.value.trim();
+                if (!commentText) return;
+
+                const commentsContainer = form.previousElementSibling;
+                const commentDiv = document.createElement('div');
+                commentDiv.className = 'comment';
+                commentDiv.textContent = commentText;
+
+                commentsContainer.appendChild(commentDiv);
+
+                // Save comments to local storage
+                const postId = form.closest('.post').dataset.postId;
+                const savedComments = JSON.parse(localStorage.getItem(`post_${postId}_comments`) || '[]');
+                savedComments.push(commentText);
+                localStorage.setItem(`post_${postId}_comments`, JSON.stringify(savedComments));
+
+                input.value = ''; // Clear input
+            });
+        });
+   
+    </script>
+</body>
+</html>

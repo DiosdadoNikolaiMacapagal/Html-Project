@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NikoNect - See More</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* Reset and Body Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: url('Image/bg.jpg') no-repeat center center/cover;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f0f2f5;
+        }
+
+        /* Top Navigation Bar */
+        .navbar {
+            width: 100%;
+            background-color: #242526;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .logo img {
+            width: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .navbar .logo h1 {
+            font-size: 1.5em;
+            color: #ffffff;
+        }
+
+        .navbar .search-bar {
+            flex: 1;
+            margin: 0 20px;
+        }
+
+        .navbar .search-bar input {
+            width: 100%;
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: none;
+            font-size: 1em;
+            outline: none;
+            color: #333;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links .nav-item {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 0 10px;
+            font-size: 0.9em;
+            display: flex;
+            align-items: center;
+            transition: color 0.3s ease-in-out;
+        }
+
+        .nav-links .nav-item:hover {
+            color: #b0b3b8;
+        }
+
+        .nav-links .nav-item .material-icons {
+            font-size: 1.5em;
+            margin-right: 5px;
+        }
+
+        /* See More Container */
+        .see-more-container {
+            width: 100%;
+            max-width: 800px;
+            margin-top: 100px;
+            padding: 20px;
+            background: rgba(50, 50, 50, 0.9);
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .see-more-container h2 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+            color: #ffffff;
+        }
+
+        .button-list {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+        }
+
+        .button-item {
+            background-color: #3a3b3c;
+            color: #ffffff;
+            text-align: center;
+            padding: 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            font-size: 1.1em;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+        }
+
+        .button-item:hover {
+            background-color: #0095f6;
+            transform: scale(1.05);
+        }
+
+        .button-item .material-icons {
+            font-size: 1.5em;
+        }
+
+        /* Logout and Switch Account Section */
+        .logout-switch-container {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 20px;
+        }
+
+        .logout-switch-container button {
+            background-color: #ff4d4d;
+            color: #ffffff;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+        }
+
+        .logout-switch-container button:hover {
+            background-color: #e60000;
+            transform: scale(1.05);
+        }
+
+        /* Back Button */
+        .back-button {
+            margin-top: 20px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 10px 15px;
+            background-color: #0095f6;
+            border-radius: 5px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1em;
+            transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+        }
+
+        .back-button:hover {
+            background-color: #0077cc;
+            transform: scale(1.05);
+        }
+
+        .back-button .material-icons {
+            font-size: 1.2em;
+        }
+
+        /* Responsive Design */
+        @media screen and (max-width: 768px) {
+            .button-list {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="Image/logo.png" alt="NikoNect Logo">
+            <h1>NikoNect</h1>
+        </div>
+        <div class="search-bar">
+            <input type="text" placeholder="Search...">
+        </div>
+        <div class="nav-links">
+            <a href="friends.html" class="nav-item"><span class="material-icons">people</span>Friends</a>
+            <a href="video.html" class="nav-item"><span class="material-icons">videocam</span>Video</a>
+            <a href="marketplace.html" class="nav-item"><span class="material-icons">storefront</span>Marketplace</a>
+            <a href="groups.html" class="nav-item"><span class="material-icons">groups</span>Groups</a>
+            <a href="memories.html" class="nav-item"><span class="material-icons">history</span>Memories</a>
+            <a href="saved.html" class="nav-item"><span class="material-icons">bookmark</span>Saved</a>
+            <a href="about.html" class="nav-item"><span class="material-icons">rss_feed</span>Feed</a>
+            <a href="events.html" class="nav-item"><span class="material-icons">event</span>Events</a>
+        </div>
+    </div>
+
+    <!-- Back Button -->
+    <a href="index.html" class="back-button">
+        <span class="material-icons">arrow_back</span>Back
+    </a>
+
+    <!-- See More Container -->
+    <div class="see-more-container">
+        <h2>See More Options</h2>
+        <div class="button-list">
+            <a href="friends.html" class="button-item"><span class="material-icons">people</span>Friends</a>
+            <a href="video.html" class="button-item"><span class="material-icons">videocam</span>Video</a>
+            <a href="marketplace.html" class="button-item"><span class="material-icons">storefront</span>Marketplace</a>
+            <a href="groups.html" class="button-item"><span class="material-icons">groups</span>Groups</a>
+            <a href="memories.html" class="button-item"><span class="material-icons">history</span>Memories</a>
+            <a href="saved.html" class="button-item"><span class="material-icons">bookmark</span>Saved</a>
+            <a href="about.html" class="button-item"><span class="material-icons">rss_feed</span>Feed</a>
+            <a href="events.html" class="button-item"><span class="material-icons">event</span>Events</a>
+        </div>
+
+        <!-- Logout and Switch Account -->
+        <div class="logout-switch-container">
+            <button onclick="logout()">Log Out</button>
+            <button onclick="switchAccount()">Switch Account</button>
+        </div>
+    </div>
+
+    <script>
+        // Logout function
+        function logout() {
+            alert('Logging out...');
+            window.location.href = "index.html";
+        }
+
+        // Switch Account function
+        function switchAccount() {
+            alert('Switching account...');
+            window.location.href = "switchaccount.html";
+        }
+    </script>
+</body>
+</html>

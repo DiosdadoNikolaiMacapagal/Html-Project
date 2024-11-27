@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NikoNect - Login</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: 'Franklin Gothic Medium', Arial, sans-serif;
+            color: #f0f0f0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background: url('Image/bg.jpg') no-repeat center center/cover;
+            overflow: hidden;
+        }
+
+        /* Container Styling */
+        .login-container {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            max-width: 400px;
+            background: rgba(40, 40, 40, 0.9);
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.8);
+            text-align: center;
+            backdrop-filter: blur(8px);
+        }
+
+       /* Logo Styling */
+       .logo {
+            width: 80px;
+            height: 80px;
+            margin-bottom: 20px;
+            animation: spin 3s linear infinite; }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        /* Title Styling */
+        h4 {
+            font-size: 1.5em;
+            margin-bottom: 20px;
+            color: #ffffff;
+            letter-spacing: 1px;
+        }
+
+        /* Input Field Styling */
+        .input-field {
+            width: 100%;
+            padding: 12px 15px;
+            margin: 10px 0;
+            font-size: 1em;
+            color: #fff;
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            border-radius: 8px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .input-field:focus {
+            border-color: #0095f6;
+            outline: none;
+            background: rgba(0, 149, 246, 0.1);
+        }
+
+        .input-field::placeholder {
+            color: #bbb;
+        }
+
+        /* Login Button */
+        .login-btn {
+            width: 100%;
+            padding: 12px;
+            background: linear-gradient(45deg, #0095f6, #006fba);
+            color: #fff;
+            font-size: 1.1em;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            margin-top: 20px;
+            transition: all 0.3s ease-in-out;
+        }
+
+        .login-btn:hover {
+            background: linear-gradient(45deg, #007bb5, #004d73);
+            transform: translateY(-3px);
+            box-shadow: 0 8px 15px rgba(0, 149, 246, 0.6);
+        }
+
+        /* Links Container */
+        .link-container {
+            margin-top: 20px;
+        }
+
+        .link-container a {
+            font-size: 0.9em;
+            color: #0095f6;
+            text-decoration: none;
+            margin: 0 10px;
+            transition: color 0.3s ease;
+        }
+
+        .link-container a:hover {
+            color: #007bb5;
+            text-decoration: underline;
+        }
+
+        /* Error Message Styling */
+        .error-message {
+            color: #ff4b4b;
+            font-size: 0.85em;
+            margin-top: 10px;
+            display: none;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 480px) {
+            .login-container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <img src="Image/logo.png" alt="Logo" class="logo">
+        <h4>Log into NikoNect</h4>
+        <input type="text" class="input-field" placeholder="Email or phone number" id="email">
+        <input type="password" class="input-field" placeholder="Password" id="password">
+        <button class="login-btn">Login</button>
+        <div class="error-message" id="error-message">Please fill out all fields correctly.</div>
+        <div class="link-container">
+            <a href="forget.html">Forgot Password?</a>
+            <a href="signup.html">Sign Up</a>
+        </div>
+    </div>
+
+    <script>
+        document.querySelector('.login-btn').addEventListener('click', function(event) {
+            event.preventDefault();
+            const email = document.getElementById('email').value.trim();
+            const password = document.getElementById('password').value.trim();
+            const errorMessage = document.getElementById('error-message');
+
+            if (!email || !password) {
+                errorMessage.style.display = 'block';
+                errorMessage.textContent = 'Please fill out all fields.';
+                return;
+            }
+
+            if (!/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/.test(email)) {
+                errorMessage.style.display = 'block';
+                errorMessage.textContent = 'Enter a valid email address.';
+                return;
+            }
+            errorMessage.style.display = 'none';
+            window.location.href = 'about.html';
+
+        });
+    </script>
+</body>
+</html>

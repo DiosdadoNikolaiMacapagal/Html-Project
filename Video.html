@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NikoNect - Video Feed</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background: url('Image/bg.jpg') no-repeat center center/cover;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f0f2f5;
+        }
+
+        /* Top Navigation Bar */
+        .navbar {
+            width: 100%;
+            background-color: #242526;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* Logo */
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .logo img {
+            width: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .navbar .logo h1 {
+            font-size: 1.5em;
+            color: #ffffff;
+        }
+
+        /* Search Bar in Navbar */
+        .navbar .search-bar {
+            flex: 1;
+            margin: 0 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .search-bar input {
+            width: 100%;
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: none;
+            font-size: 1em;
+            color: #333;
+        }
+
+        /* Navigation Links */
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links .nav-item {
+            display: flex;
+            align-items: center;
+            color: #ffffff;
+            padding: 0 10px;
+            font-size: 0.9em;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links .nav-item .material-icons {
+            font-size: 1.5em;
+            margin-right: 5px;
+        }
+
+        .nav-links .nav-item:hover {
+            color: #b0b3b8;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 80px; /* Spacing for fixed navbar */
+            padding: 20px;
+            width: 100%;
+            max-width: 800px;
+            color: #ffffff;
+        }
+
+        /* Back Button Styling */
+        .back-button {
+            display: flex;
+            align-items: center;
+            color: #ffffff;
+            font-size: 1em;
+            text-decoration: none;
+            background-color: #0095f6;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin-bottom: 20px;
+            width: fit-content;
+        }
+
+        .back-button:hover {
+            background-color: #0077cc;
+        }
+
+        .back-button .material-icons {
+            margin-right: 5px;
+            font-size: 1.2em;
+        }
+
+        /* Video Post Container */
+        .post {
+            background: rgba(50, 50, 50, 0.85);
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Video Styling */
+        .video-frame {
+            width: 100%;
+            border-radius: 10px;
+            margin: 15px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Profile Link and Heading */
+        .profile-link {
+            color: #0095f6;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            color: #ffffff;
+            margin: 10px 0;
+        }
+
+        /* Actions Styling with Icon Buttons */
+        .actions {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 10px;
+        }
+
+        .action-btn {
+            display: flex;
+            align-items: center;
+            color: #b0b3b8;
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 1.1em;
+        }
+
+        .action-btn .material-icons {
+            font-size: 1.2em;
+            margin-right: 5px;
+        }
+
+        .action-btn:hover {
+            color: #0095f6;
+        }
+        /* Video Styling */
+.video-frame {
+    width: 100%;
+    height: auto;  /* Maintain aspect ratio */
+    border-radius: 10px;
+    margin: 15px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+.video-frame {
+    width: 100%;
+    height: 486px;  /* Fixed height for the video */
+    border-radius: 10px;
+    margin: 15px 0;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="Image/logo.png" alt="NikoNect Logo">
+            <h1>NikoNect</h1>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <input type="text" placeholder="Search NikoNect">
+        </div>
+
+        <!-- Navigation Links with Icons -->
+        <div class="nav-links">
+            <a href="friends.html" class="nav-item"><span class="material-icons">people</span>Friends</a>
+            <a href="Video.html" class="nav-item"><span class="material-icons">videocam</span>Video</a>
+            <a href="marketplace.html" class="nav-item"><span class="material-icons">storefront</span>Marketplace</a>
+            <a href="groups.html" class="nav-item"><span class="material-icons">groups</span>Groups</a>
+            <a href="memories.html" class="nav-item"><span class="material-icons">history</span>Memories</a>
+            <a href="saved.html" class="nav-item"><span class="material-icons">bookmark</span>Saved</a>
+            <a href="about.html" class="nav-item"><span class="material-icons">rss_feed</span>Feed</a>
+            <a href="events.html" class="nav-item"><span class="material-icons">event</span>Events</a>
+            <a href="seemore.html" class="nav-item"><span class="material-icons">more_horiz</span>See More</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+        
+        <!-- Back Button -->
+        <a href="javascript:history.back()" class="back-button">
+            <span class="material-icons">arrow_back</span> Back
+        </a>
+
+        <h1>NikoNect Video Feed</h1>
+
+        <div class="post">
+            <a href="profile1.html" class="profile-link">@Niko</a>
+            <h2>Bleach: Thousand-Year Blood War</h2>
+            <iframe class="video-frame" src="https://www.youtube.com/embed/eA8-t-iyAV4" title="Official JUMP FESTA Trailer Bleach: Thousand-Year Blood War | Japanese DUB | 4K60FPS |" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <div class="actions">
+                <a href="#" class="action-btn"><span class="material-icons">thumb_up</span>Like</a> 
+                <a href="#" class="action-btn"><span class="material-icons">comment</span>Comment</a> 
+                <a href="#" class="action-btn"><span class="material-icons">share</span>Share</a>
+            </div>
+        </div>
+        
+        <!-- Video Post 2 -->
+        <div class="post">
+            <a href="profile2.html" class="profile-link">@Shan</a>
+            <h2>Check out the DAN DA DAN Opening!</h2>
+            <iframe class="video-frame" src="https://www.youtube.com/embed/a4na2opArGY" title="DAN DA DAN Opening | Otonoke by Creepy Nuts" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <div class="actions">
+                <a href="#" class="action-btn"><span class="material-icons">thumb_up</span>Like</a> 
+                <a href="#" class="action-btn"><span class="material-icons">comment</span>Comment</a> 
+                <a href="#" class="action-btn"><span class="material-icons">share</span>Share</a>
+            </div>
+        </div>
+        
+
+        <!-- Video Post 3 -->
+        <div class="post">
+            <a href="profile3.html" class="profile-link">@Naruto</a>
+            <h2>The rise of Xi Jinping, explained</h2>
+            <iframe class="video-frame" src="https://www.youtube.com/embed/1ZKBaRsP1gY" title="The rise of Xi Jinping, explained" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+            <div class="actions">
+                <a href="#" class="action-btn"><span class="material-icons">thumb_up</span>Like</a> 
+                <a href="#" class="action-btn"><span class="material-icons">comment</span>Comment</a> 
+                <a href="#" class="action-btn"><span class="material-icons">share</span>Share</a>
+            </div>
+        </div>
+        
+        
+    <!-- Video Post 4 -->
+    <div class="post">
+        <a href="nini.html" class="profile-link">@Nini</a>
+        <h2>Arcane Season 2 Trailer!</h2>
+        <iframe class="video-frame" src="https://www.youtube.com/embed/ysqiEC6bLUI" title="Arcane: Season 2 | Official Trailer | Netflix" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <div class="actions">
+            <a href="#" class="action-btn"><span class="material-icons">thumb_up</span>Like</a> 
+            <a href="#" class="action-btn"><span class="material-icons">comment</span>Comment</a> 
+            <a href="#" class="action-btn"><span class="material-icons">share</span>Share</a>
+        </div>
+    </div>
+    
+    <!-- Video Post 5 -->
+    <div class="post">
+        <a href="dayin.html" class="profile-link">@Dayin</a>
+        <h2>Arcane x Valorant Collector’s Set Reveal!</h2>
+        <iframe class="video-frame" src="https://www.youtube.com/embed/d1yOu8UlmkQ" title="ARCANE SEASON 2 COLLECTOR’S SET // Skin Reveal Trailer - VALORANT" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+        <div class="actions">
+            <a href="#" class="action-btn"><span class="material-icons">thumb_up</span>Like</a> 
+            <a href="#" class="action-btn"><span class="material-icons">comment</span>Comment</a> 
+            <a href="#" class="action-btn"><span class="material-icons">share</span>Share</a>
+        </div>
+    </div>
+    
+
+</div>
+<script>
+document.querySelectorAll('.action-btn').forEach(button => {
+    button.addEventListener('click', function(event) {
+        event.preventDefault();
+        const icon = this.querySelector('.material-icons');
+        
+        if (this.classList.contains('like-btn')) {
+            if (icon.textContent === 'thumb_up') {
+                icon.textContent = 'thumb_up_off_alt';
+            } else {
+                icon.textContent = 'thumb_up';
+            }
+        } else if (this.classList.contains('comment-btn')) {
+            const postId = this.closest('.post').querySelector('h2').textContent;
+            alert(`You clicked comment on the post: "${postId}"`);
+        } else if (this.classList.contains('share-btn')) {
+            const postId = this.closest('.post').querySelector('h2').textContent;
+            alert(`You clicked share on the post: "${postId}"`);
+        }
+    });
+});
+
+</script>
+</body>
+</html>

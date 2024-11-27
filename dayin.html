@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@Dayin's Profile - NikoNect</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"> <!-- Google Material Icons -->
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling with Background Image and Overlay */
+        body {
+            font-family: Arial, sans-serif;
+            color: #f0f0f0;
+            background: url('Image/bg.jpg') no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            padding-top: 80px; /* Space for navbar */
+            position: relative;
+            min-height: 100vh;
+        }
+
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6); /* Dark overlay for better contrast */
+            z-index: 1;
+        }
+
+        /* Navbar */
+        .navbar {
+            width: 100%;
+            background-color: rgba(36, 37, 38, 0.9); /* Slight transparency */
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            z-index: 1002; /* Above overlay */
+        }
+
+        /* Logo */
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .logo img {
+            width: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .navbar .logo h1 {
+            font-size: 1.5em;
+            color: #ffffff;
+        }
+
+        /* Search Bar */
+        .navbar .search-bar {
+            flex: 1;
+            margin: 0 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .search-bar input {
+            width: 100%;
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: none;
+            font-size: 1em;
+        }
+
+        /* Navigation Links */
+        .navbar .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links .nav-item {
+            display: flex;
+            align-items: center;
+            color: #ffffff;
+            padding: 0 10px;
+            font-size: 0.9em;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links .nav-item .material-icons {
+            font-size: 1.5em;
+            margin-right: 5px;
+        }
+
+        .nav-links .nav-item:hover {
+            color: #b0b3b8;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 900px;
+            background: rgba(50, 50, 50, 0.85); /* Dark semi-transparent background */
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            padding: 20px;
+            position: relative;
+            z-index: 2;
+            color: #f0f0f0;
+        }
+
+        /* Profile Header */
+        .profile-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .profile-header img {
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            margin-right: 20px;
+        }
+
+        .profile-header h2 {
+            font-size: 1.5em;
+            margin: 0;
+            color: #0095f6;
+        }
+
+        .profile-header p {
+            color: #bbb;
+            margin-top: 10px;
+        }
+
+        /* Stats Section */
+        .stats {
+            display: flex;
+            justify-content: space-around;
+            margin: 20px 0;
+        }
+
+        .stat {
+            text-align: center;
+        }
+
+        .stat span {
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        /* Suggested Friends & Recent Post */
+        .content {
+            display: flex;
+            gap: 20px;
+        }
+
+        .suggested-friends,
+        .recent-post {
+            flex: 1;
+        }
+
+        .suggested-friends h4,
+        .recent-post h4 {
+            font-size: 1.2em;
+            margin-bottom: 10px;
+        }
+
+        .suggested-friends ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        .suggested-friends ul li a {
+            color: #0095f6;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .suggested-friends ul li a:hover {
+            color: #005bb5;
+        }
+
+        .recent-post p {
+            font-size: 0.9em;
+            text-align: justify;
+            color: #ccc;
+        }
+
+        .hashtags {
+            color: #aaa;
+            font-size: 0.9em;
+            margin-top: 10px;
+        }
+
+        /* Image Styling */
+        .feed-img {
+            width: 100%;
+            max-width: 300px;
+            border-radius: 5px;
+            margin-top: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Actions Styling */
+        .actions {
+            margin-top: 10px;
+        }
+
+        .action-btn {
+            color: #0095f6;
+            text-decoration: none;
+            margin-right: 10px;
+        }
+
+        .action-btn:hover {
+            text-decoration: underline;
+        }
+
+        /* Footer Links */
+        .footer {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 0.9em;
+            color: #aaa;
+        }
+
+        .footer a {
+            color: #0095f6;
+            text-decoration: none;
+        }
+
+        .footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="Image/logo.png" alt="NikoNect Logo">
+            <h1>NikoNect</h1>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <input type="text" placeholder="Search NikoNect">
+        </div>
+
+        <!-- Navigation Links with Icons -->
+        <div class="nav-links">
+            <a href="friends.html" class="nav-item"><span class="material-icons">people</span>Friends</a>
+            <a href="Video.html" class="nav-item"><span class="material-icons">videocam</span>Video</a>
+            <a href="marketplace.html" class="nav-item"><span class="material-icons">storefront</span>Marketplace</a>
+            <a href="groups.html" class="nav-item"><span class="material-icons">groups</span>Groups</a>
+            <a href="memories.html" class="nav-item"><span class="material-icons">history</span>Memories</a>
+            <a href="saved.html" class="nav-item"><span class="material-icons">bookmark</span>Saved</a>
+            <a href="about.html" class="nav-item"><span class="material-icons">rss_feed</span>Feed</a>
+            <a href="events.html" class="nav-item"><span class="material-icons">event</span>Events</a>
+            <a href="seemore.html" class="nav-item"><span class="material-icons">more_horiz</span>See More</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="container">
+        <section class="profile-header">
+            <img src="Image/dayinprofile.gif" alt="Profile Picture">
+            <div>
+                <h2>@Dayin</h2>
+                <p>Adventures in anime land 🌸💫</p>
+            </div>
+        </section>
+
+        <section class="stats">
+            <div class="stat">
+                <span>200</span>
+                <div>Followers</div>
+            </div>
+            <div class="stat">
+                <span>180</span>
+                <div>Following</div>
+            </div>
+            <div class="stat">
+                <span>50</span>
+                <div>Posts</div>
+            </div>
+        </section>
+
+        <div class="content">
+            <!-- Suggested Friends -->
+            <section class="suggested-friends">
+                <h4>Suggested Friends</h4>
+                <ul>
+                    <li><a href="profile1.html">@Nini</a></li>
+                    <li><a href="profile2.html">@Shan</a></li>
+                    <li><a href="profile3.html">@Naruto</a></li>
+                </ul>
+            </section>
+
+            <!-- Recent Post -->
+            <section class="recent-post">
+                <h4>Recent Post</h4>
+                <p>Just finished watching the movie of <strong>Your Name</strong>! 🌸 The storyline keeps getting better, and the animation quality is top-notch! Can’t wait to see what happens next. Anyone else watching this? <span class="hashtags">#YourName #AnimeLovers </span></p>
+
+                <img src="Image/dayinpost.gif" class="feed-img" alt="Recent Post Image">
+                <div class="hashtags">#AnimeExploration #NewGenres #WeekendVibes</div>
+
+                <div class="actions">
+                    <a href="#" class="action-btn">Like</a>
+                    <a href="#" class="action-btn">Comment</a>
+                    <a href="#" class="action-btn">Share</a>
+                </div>
+            </section>
+        </div>
+
+        <footer class="footer">
+            <p><a href="about.html">Back to Newsfeed</a></p>
+            <p><a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a> | <a href="#">Help Center</a></p>
+            <p>Contact support: NikoNect@support.com</p>
+        </footer>
+    </div>
+    <script>
+        document.querySelector('.search-bar input').addEventListener('input', function(event) {
+            const searchQuery = event.target.value.toLowerCase();
+            const friendLinks = document.querySelectorAll('.suggested-friends ul li a');
+    
+            friendLinks.forEach(function(link) {
+                const friendName = link.textContent.toLowerCase();
+                if (friendName.includes(searchQuery)) {
+                    link.style.display = 'block'; // Show matched friends
+                } else {
+                    link.style.display = 'none'; // Hide unmatched friends
+                }
+            });
+        });
+    
+        const toggleMenu = document.createElement('div');
+        toggleMenu.innerHTML = '<span class="material-icons">menu</span>';
+        toggleMenu.classList.add('menu-toggle');
+        document.querySelector('.navbar').appendChild(toggleMenu);
+    
+        toggleMenu.addEventListener('click', function() {
+            const navLinks = document.querySelector('.nav-links');
+            navLinks.style.display = (navLinks.style.display === 'block') ? 'none' : 'block';
+        });
+    </script>
+    
+</body>
+</html>

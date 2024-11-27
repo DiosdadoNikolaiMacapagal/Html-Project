@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NikoNect - Marketplace</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Body Styling */
+        body {
+            font-family: Arial, sans-serif;
+            background: url('Image/bg.jpg') no-repeat center center/cover;
+            color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f0f2f5;
+        }
+
+        /* Top Navigation Bar */
+        .navbar {
+            width: 100%;
+            background-color: #242526;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+        }
+
+        /* Logo */
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .logo img {
+            width: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .navbar .logo h1 {
+            font-size: 1.5em;
+            color: #ffffff;
+        }
+
+        /* Search Bar in Navbar */
+        .navbar .search-bar {
+            flex: 1;
+            margin: 0 20px;
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .search-bar input {
+            width: 100%;
+            padding: 8px 15px;
+            border-radius: 20px;
+            border: none;
+            font-size: 1em;
+            color: #333;
+        }
+
+        /* Navigation Links */
+        .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links .nav-item {
+            display: flex;
+            align-items: center;
+            color: #ffffff;
+            padding: 0 10px;
+            font-size: 0.9em;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .nav-links .nav-item .material-icons {
+            font-size: 1.5em;
+            margin-right: 5px;
+        }
+
+        .nav-links .nav-item:hover {
+            color: #b0b3b8;
+        }
+
+        /* Main Content */
+        .main-content {
+            margin-top: 80px; /* Spacing for fixed navbar */
+            padding: 20px;
+            width: 100%;
+            max-width: 800px;
+            color: #ffffff;
+        }
+
+        /* Back Button Styling */
+        .back-button {
+            display: flex;
+            align-items: center;
+            color: #ffffff;
+            font-size: 1em;
+            text-decoration: none;
+            background-color: #0095f6;
+            padding: 8px 15px;
+            border-radius: 5px;
+            transition: background-color 0.3s;
+            margin-bottom: 20px;
+            width: fit-content;
+        }
+
+        .back-button:hover {
+            background-color: #0077cc;
+        }
+
+        .back-button .material-icons {
+            margin-right: 5px;
+            font-size: 1.2em;
+        }
+
+        /* Marketplace Item Container */
+        .marketplace-item {
+            background: rgba(50, 50, 50, 0.85);
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Item Image Styling */
+        .item-img {
+            width: 100%;
+            border-radius: 10px;
+            margin: 15px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Profile Link and Item Title */
+        .profile-link {
+            color: #0095f6;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        h2 {
+            font-size: 1.5em;
+            color: #ffffff;
+            margin: 10px 0;
+        }
+
+        /* Actions Styling with Icon Buttons */
+        .actions {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 10px;
+        }
+
+        .action-btn {
+            display: flex;
+            align-items: center;
+            color: #b0b3b8;
+            font-weight: bold;
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 1.1em;
+        }
+
+        .action-btn .material-icons {
+            font-size: 1.2em;
+            margin-right: 5px;
+        }
+
+        .action-btn:hover {
+            color: #0095f6;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="Image/logo.png" alt="NikoNect Logo">
+            <h1>NikoNect</h1>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="search-bar">
+            <input type="text" placeholder="Search NikoNect">
+        </div>
+
+        <!-- Navigation Links with Icons -->
+        <div class="nav-links">
+            <a href="friends.html" class="nav-item"><span class="material-icons">people</span>Friends</a>
+            <a href="Video.html" class="nav-item"><span class="material-icons">videocam</span>Video</a>
+            <a href="marketplace.html" class="nav-item"><span class="material-icons">storefront</span>Marketplace</a>
+            <a href="groups.html" class="nav-item"><span class="material-icons">groups</span>Groups</a>
+            <a href="memories.html" class="nav-item"><span class="material-icons">history</span>Memories</a>
+            <a href="saved.html" class="nav-item"><span class="material-icons">bookmark</span>Saved</a>
+            <a href="about.html" class="nav-item"><span class="material-icons">rss_feed</span>Feed</a>
+            <a href="events.html" class="nav-item"><span class="material-icons">event</span>Events</a>
+            <a href="seemore.html" class="nav-item"><span class="material-icons">more_horiz</span>See More</a>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="main-content">
+
+        <!-- Back Button -->
+        <a href="javascript:history.back()" class="back-button">
+            <span class="material-icons">arrow_back</span> Back
+        </a>
+
+        <h1>NikoNect Marketplace</h1>
+
+        <!-- Marketplace Item 1 -->
+        <div class="marketplace-item">
+            <a href="profile1.html" class="profile-link">@Niko</a>
+            <h2>Stylish Sofa for Sale</h2>
+            <img src="Image/sofa.jpg" alt="Sofa" class="item-img">
+            <p>Price: ₱250</p>
+            <div class="actions">
+                <a href="profile1.html" class="action-btn"><span class="material-icons">chat</span>Message Seller</a>
+                <a href="#" class="action-btn"><span class="material-icons">thumb_up</span>Like</a>
+                <a href="#" class="action-btn"><span class="material-icons">share</span>Share</a>
+            </div>
+        </div>
+
+        <!-- Marketplace Item 2 -->
+        <div class="marketplace-item">
+            <a href="profile2.html" class="profile-link">@Shan</a>
+            <h2>Mountain Bike - Great Condition</h2>
+            <img src="Image/bike.jpg" alt="Mountain Bike" class="item-img">
+            <p>Price: ₱180</p>
+            <div class="actions">
+                <a href="profile2.html" class="action-btn"><span class="material-icons">chat</span>Message Seller</a>
+                <a href="#" class="action-btn"><span class="material-icons">thumb_up</span>Like</a>
+                <a href="#" class="action-btn"><span class="material-icons">share</span>Share</a>
+            </div>
+        </div>
+
+        <!-- Marketplace Item 3 -->
+        <div class="marketplace-item">
+            <a href="profile3.html" class="profile-link">@Naruto</a>
+            <h2>Gaming Laptop - High Performance</h2>
+            <img src="Image/laptop.jpg" alt="Gaming Laptop" class="item-img">
+            <p>Price: ₱900</p>
+            <div class="actions">
+                <a href="profile3.html" class="action-btn"><span class="
+                    material-icons">chat</span>Message Seller</a>
+                    <a href="#" class="action-btn"><span class="material-icons">thumb_up</span>Like</a>
+                    <a href="#" class="action-btn"><span class="material-icons">share</span>Share</a>
+                </div>
+            </div>
+    
+            <!-- Marketplace Item 4 -->
+            <div class="marketplace-item">
+                <a href="shanko.html" class="profile-link">@Shanko</a>
+                <h2>Rolex Watch </h2>
+                <img src="Image/watch.jpg" alt="Vintage Watch" class="item-img">
+                <p>Price: ₱350</p>
+                <div class="actions">
+                    <a href="shanko.html" class="action-btn"><span class="material-icons">chat</span>Message Seller</a>
+                    <a href="#" class="action-btn"><span class="material-icons">thumb_up</span>Like</a>
+                    <a href="#" class="action-btn"><span class="material-icons">share</span>Share</a>
+                </div>
+            </div>
+    
+            <!-- Marketplace Item 5 -->
+            <div class="marketplace-item">
+                <a href="nini.html" class="profile-link">@Nini</a>
+                <h2>ROG 8 PRO - New Model</h2>
+                <img src="Image/phone.jpg" alt="Smartphone" class="item-img">
+                <p>Price: ₱600</p>
+                <div class="actions">
+                    <a href="nini.html" class="action-btn"><span class="material-icons">chat</span>Message Seller</a>
+                    <a href="#" class="action-btn"><span class="material-icons">thumb_up</span>Like</a>
+                    <a href="#" class="action-btn"><span class="material-icons">share</span>Share</a>
+                </div>
+            </div>
+            
+        </div> <!-- End Main Content -->
+    <script>
+        function toggleLike(button) {
+    const icon = button.querySelector('.material-icons');
+    if (icon.textContent === 'thumb_up') {
+        icon.textContent = 'thumb_down';
+        button.style.color = '#ff3b30';
+    } else {
+        icon.textContent = 'thumb_up';
+        button.style.color = '';
+    }
+}
+
+function shareItem(button) {
+    alert('Item has been shared!');
+}
+
+function messageSeller(button) {
+    alert('Message sent to the seller!');
+}
+
+document.querySelectorAll('.action-btn').forEach(button => {
+    if (button.textContent.includes('Like')) {
+        button.addEventListener('click', function() {
+            toggleLike(button);
+        });
+    } else if (button.textContent.includes('Share')) {
+        button.addEventListener('click', function() {
+            shareItem(button);
+        });
+    } else if (button.textContent.includes('Message Seller')) {
+        button.addEventListener('click', function() {
+            messageSeller(button);
+        });
+    }
+});
+
+    </script>
+    </body>
+    </html>
+    

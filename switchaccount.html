@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NikoNect - Switch Account</title>
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <style>
+        /* Reset and Body Styling */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: url('Image/bg.jpg') no-repeat center center/cover;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            background-color: #f0f2f5;
+        }
+
+        /* Top Navigation Bar */
+        .navbar {
+            width: 100%;
+            background-color: #242526;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 10px 20px;
+            position: fixed;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+        }
+
+        .navbar .logo {
+            display: flex;
+            align-items: center;
+        }
+
+        .navbar .logo img {
+            width: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .navbar .logo h1 {
+            font-size: 1.5em;
+            color: #ffffff;
+        }
+
+        .navbar .nav-links {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-links .nav-item {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 0 10px;
+            font-size: 0.9em;
+            display: flex;
+            align-items: center;
+            transition: color 0.3s;
+        }
+
+        .nav-links .nav-item:hover {
+            color: #b0b3b8;
+        }
+
+        .nav-links .nav-item .material-icons {
+            font-size: 1.5em;
+            margin-right: 5px;
+        }
+
+        /* Switch Account Container */
+        .switch-account-container {
+            width: 100%;
+            max-width: 800px;
+            margin-top: 100px;
+            padding: 20px;
+            background: rgba(50, 50, 50, 0.85);
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+            color: #ffffff;
+        }
+
+        .switch-account-container h2 {
+            font-size: 1.8em;
+            margin-bottom: 20px;
+        }
+
+        /* Form Inputs */
+        .form-group {
+            margin-bottom: 15px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 1.1em;
+        }
+
+        .form-group input {
+            width: 100%;
+            padding: 10px;
+            font-size: 1em;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        .form-group input[type="submit"] {
+            background-color: #0095f6;
+            border: none;
+            color: #ffffff;
+            cursor: pointer;
+            font-size: 1.1em;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .form-group input[type="submit"]:hover {
+            background-color: #0077cc;
+            transform: scale(1.05);
+        }
+
+        /* Past Accounts List */
+        .past-accounts {
+            margin-top: 30px;
+        }
+
+        .past-accounts h3 {
+            margin-bottom: 10px;
+        }
+
+        .account-item {
+            background-color: #3a3b3c;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            font-size: 1.1em;
+            color: #ffffff;
+            display: flex;
+            align-items: center;
+            transition: background-color 0.3s ease-in-out, transform 0.2s;
+            cursor: pointer;
+        }
+
+        .account-item:hover {
+            background-color: #0095f6;
+            transform: scale(1.05);
+        }
+
+        .account-item img {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .back-button {
+            margin-top: 80px;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            padding: 10px 15px;
+            background-color: #0095f6;
+            border-radius: 5px;
+            color: #ffffff;
+            text-decoration: none;
+            font-size: 1em;
+            transition: background-color 0.3s, transform 0.2s;
+        }
+
+        .back-button:hover {
+            background-color: #0077cc;
+            transform: scale(1.05);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation Bar -->
+    <div class="navbar">
+        <div class="logo">
+            <img src="Image/logo.png" alt="NikoNect Logo">
+            <h1>NikoNect</h1>
+        </div>
+    </div>
+
+    <!-- Back Button -->
+    <a href="seemore.html" class="back-button">
+        <span class="material-icons">arrow_back</span>Back
+    </a>
+
+    <!-- Switch Account Container -->
+    <div class="switch-account-container">
+        <h2>Switch Account</h2>
+
+        <!-- Form for New Account -->
+        <form id="switch-account-form">
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Enter email" required>
+            </div>
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" placeholder="Enter password" required>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Switch Account">
+            </div>
+        </form>
+
+        <!-- Past Accounts -->
+        <div class="past-accounts">
+            <h3>Past Accounts</h3>
+            <div class="account-item">
+                <img src="Image/niniprofile.gif" alt="User 1">
+                <span>nini@gmail.com</span>
+            </div>
+            <div class="account-item">
+                <img src="Image/dayinprofile.gif" alt="User 2">
+                <span>dayin@gmail.com</span>
+            </div>
+            <div class="account-item">
+                <img src="Image/nikoprofile.gif" alt="User 3">
+                <span>niko@gmail.com</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            const switchAccountForm = document.getElementById("switch-account-form");
+            const pastAccounts = document.querySelectorAll(".account-item");
+
+            // Redirect to about.html on form submission
+            switchAccountForm.addEventListener("submit", function (e) {
+                e.preventDefault();
+                const email = document.getElementById("email").value;
+                const password = document.getElementById("password").value;
+
+                if (email && password) {
+                    alert(`Switching to account: ${email}`);
+                    window.location.href = "about.html";
+                } else {
+                    alert("Please fill in all fields.");
+                }
+            });
+
+            // Autofill email field on past account click
+            pastAccounts.forEach(account => {
+                account.addEventListener("click", function () {
+                    const email = this.querySelector("span").textContent;
+                    document.getElementById("email").value = email;
+                    document.getElementById("password").focus();
+                });
+            });
+        });
+    </script>
+</body>
+</html>
